@@ -10,4 +10,3 @@ class TestExample {
         assertEquals("ABC", toCamelCase("A-B-C"))
     }
 }
-}
