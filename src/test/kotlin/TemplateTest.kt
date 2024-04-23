@@ -1,9 +1,13 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class TemplateTest {
+class TestExample {
     @Test
-    fun `pass`() {
-        assertTrue(true)
+    fun testFixed() {
+        assertEquals("", toCamelCase(""))
+        assertEquals("theStealthWarrior", toCamelCase("the_stealth_warrior"))
+        assertEquals("TheStealthWarrior", toCamelCase("The-Stealth-Warrior"))
+        assertEquals("ABC", toCamelCase("A-B-C"))
     }
+}
 }
