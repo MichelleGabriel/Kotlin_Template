@@ -8,8 +8,10 @@ object EnoughIsEnough {
             .filterIndexed() { index, element ->
                 elements
                     .slice(0..index)
-                    .count{ it == element } <= maxOcurrences
-                }
+                    .count { it == element } <= maxOcurrences
+            }
             .toIntArray()
+        //FilterIndexed wie ein Laufband vorstellen.
+        //Es gibt eine Liste zurueck mit all den Elementen die die Bedingung eruellen
     }
 }
