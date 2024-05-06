@@ -21,28 +21,36 @@ fun getScore(dice: IntArray): Int {
 
 }
 
-private fun resultOf(dice: IntArray): Int {
-    if (dice.isStraight()) {
-        return 1000
-    }
-
-    if (dice.containsThreePairs()) {
-        return 750
-    }
-
-    return 0
-
+private fun resultOf(dice: IntArray): Int = when {
+    dice.isStraight() -> 1000
+    dice.hasThreePairs() -> 750
+    dice.hasThreeSame(1) -> 1000
+    dice.hasThreeSame(2) -> 200
+    dice.hasThreeSame(3) -> 300
+    else -> 0
 }
 
-private fun IntArray.containsThreePairs(): Boolean {
-    this.filterIndexed { index, element ->
-        this
-            .slice(1..index)
-            .count { it == element } == 3
-    }
+private fun IntArray.hasThreeOnes() = groupBy { 1 }
+        .count { it.value.size == 3 } == 1
 
-    return false
+private fun IntArray.hasThreeTwos() = groupBy { 2 }
+    .count { it.value.size == 3 } == 1
+
+
+private fun IntArray.hasThreeSame(diceNumber: Int) = groupBy { it }
+    .count { it.value.size == 3 } == 1
+
+private fun IntArray.hasThreeSameTest(diceNumber: Int): Boolean {
+    forEach { if (it == diceNumber) {
+        return this.groupBy { it }
+            .count{ it.value.size == 3 } == 1
+    } else }
 }
+
+
+private fun IntArray.hasThreePairs() = groupBy { it }
+    .count { it.value.size == 2 } == 3
+
 
 private fun IntArray.isStraight(): Boolean {
     return this.toSet() == (1..6).toSet()

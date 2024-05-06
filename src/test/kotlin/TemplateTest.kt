@@ -11,12 +11,29 @@ class ZonkTests {
         assertEquals(1000, getScore(intArrayOf(1,2,3,4,5,6)))
     }
 
-
     @Test
     fun `three pairs of any dice`() {
         assertEquals(750, getScore(intArrayOf(2,2,4,4,1,1)))
         assertEquals(0, getScore(intArrayOf(3,2)))
         assertEquals(1000, getScore(intArrayOf(1,2,3,4,5,6)))
+    }
+
+    @Test
+    fun `three of 1`() {
+        assertEquals(1000, getScore(intArrayOf(1,4,1,1)))
+        assertEquals(1000, getScore(intArrayOf(1,4,1,1,4,6)))
+    }
+
+    @Test
+    fun `three of 2`() {
+        assertEquals(200, getScore(intArrayOf(2,4,2,2)))
+        assertEquals(200, getScore(intArrayOf(2,4,2,2,4,6)))
+    }
+
+    @Test
+    fun `three same dice`() {
+        assertEquals(300, getScore(intArrayOf(3,4,3,3)))
+        assertEquals(400, getScore(intArrayOf(4,4,3,3,4,6)))
     }
 
     @Test
