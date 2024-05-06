@@ -17,39 +17,42 @@ fun getScore(dice: IntArray): Int {
 
     var diceResult: Int = 0
 
-    return resultOf(dice)
+    return scoreFromDice(dice)
 
 }
 
-private fun resultOf(dice: IntArray): Int = when {
+private fun scoreFromDice(dice: IntArray): Int = when {
     dice.isStraight() -> 1000
     dice.hasThreePairs() -> 750
-    dice.hasThreeSame(1) -> 1000
-    dice.hasThreeSame(2) -> 200
-    dice.hasThreeSame(3) -> 300
+    dice.hasThreeOf(1) -> 1000
+    dice.hasThreeOf(2) -> 200
+    dice.hasThreeOf(3) -> 300
+    dice.hasThreeOf(4) -> 400
+    dice.hasThreeOf(5) -> 500
+    dice.hasThreeOf(6) -> 600
     else -> 0
 }
 
-private fun IntArray.hasThreeOnes() = groupBy { 1 }
-        .count { it.value.size == 3 } == 1
+private fun IntArray.hasThreeOnes() = count { it == 1 } == 3
 
-private fun IntArray.hasThreeTwos() = groupBy { 2 }
-    .count { it.value.size == 3 } == 1
+private fun IntArray.hasThreeTwos() = count { it == 2 } == 3
 
 
-private fun IntArray.hasThreeSame(diceNumber: Int) = groupBy { it }
-    .count { it.value.size == 3 } == 1
+private fun IntArray.hasThreeOf(diceNumber: Int) = count { it == diceNumber } == 3
 
 private fun IntArray.hasThreeSameTest(diceNumber: Int): Boolean {
-    forEach { if (it == diceNumber) {
-        return this.groupBy { it }
-            .count{ it.value.size == 3 } == 1
-    } else }
+    return false
+//    forEach { if (it == diceNumber) {
+//        return this.groupBy { it }
+//            .count{ it.value.size == 3 } == 1
+//    } else
+//
+//    }
 }
 
 
-private fun IntArray.hasThreePairs() = groupBy { it }
-    .count { it.value.size == 2 } == 3
+private fun IntArray.hasThreePairs() = groupBy { a -> a }
+    .count { mapEntry -> mapEntry.value.size == 2 } == 3
 
 
 private fun IntArray.isStraight(): Boolean {

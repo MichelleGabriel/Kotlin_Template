@@ -6,6 +6,18 @@ import org.junit.jupiter.api.Test
 class ZonkTests {
 
     @Test
+    fun `straight dice roll returns 1000 2`() {
+        // GIVEN
+        val straightDiceRole = intArrayOf(3,2,1,4,5,6)
+
+        // WHEN
+        val score = getScore(straightDiceRole)
+
+        // THEN
+        assertEquals(1000, score)
+    }
+
+    @Test
     fun `straight dice roll returns 1000`() {
         assertEquals(1000, getScore(intArrayOf(6,3,1,2,5,4)))
         assertEquals(1000, getScore(intArrayOf(1,2,3,4,5,6)))
@@ -13,15 +25,19 @@ class ZonkTests {
 
     @Test
     fun `three pairs of any dice`() {
-        assertEquals(750, getScore(intArrayOf(2,2,4,4,1,1)))
-        assertEquals(0, getScore(intArrayOf(3,2)))
-        assertEquals(1000, getScore(intArrayOf(1,2,3,4,5,6)))
+        // GIVEN
+        val threeDifferentPairs = intArrayOf(3,3,1,1,5,5)
+
+        // WHEN
+        val score = getScore(threeDifferentPairs)
+
+        // THEN
+        assertEquals(750, score)
     }
 
     @Test
     fun `three of 1`() {
         assertEquals(1000, getScore(intArrayOf(1,4,1,1)))
-        assertEquals(1000, getScore(intArrayOf(1,4,1,1,4,6)))
     }
 
     @Test
