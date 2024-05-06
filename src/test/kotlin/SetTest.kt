@@ -82,6 +82,20 @@ class SetTest {
         assertFalse(set.contains(3))
         assertTrue(set.contains(1))
     }
+
+    @Test
+    fun `count is decreasing when removing a value`() {
+        //Given
+        val set = Set()
+        set.add(1)
+        set.add(3)
+
+        //When
+        set.remove(3)
+
+        //Then
+        assertEquals(1, set.count())
+    }
 }
 
 
