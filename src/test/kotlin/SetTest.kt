@@ -62,7 +62,6 @@ class SetTest {
 
         //When
         set.add(1)
-        set.add(1)
 
         //Then
         assertEquals(1, set.count())
@@ -77,6 +76,21 @@ class SetTest {
 
         //When
         set.remove(3)
+
+        //Then
+        assertFalse(set.contains(3))
+        assertTrue(set.contains(1))
+    }
+
+    @Test
+    fun `is removing2 a value`() {
+        //Given
+        val set = Set()
+        set.add(3)
+        set.add(1)
+
+        //When
+        set.remove2(3)
 
         //Then
         assertFalse(set.contains(3))

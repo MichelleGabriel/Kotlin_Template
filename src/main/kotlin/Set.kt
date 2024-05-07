@@ -39,5 +39,15 @@ class Set {
         intArray = newIntArray
         count = newCount
     }
-}
+
+    fun remove2(number: Int) {
+        for (index in 0..<count) {
+            if (intArray[index] == number) {
+                intArray[index] = intArray[count-1]
+                count--
+            }
+        }
+    }
+
+    }
 
