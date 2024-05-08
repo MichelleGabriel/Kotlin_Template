@@ -8,6 +8,7 @@ class Hangman(
         return "${correctGuesses(letter)}${wrongGuesses(letter)}"
     }
 
+
     private fun correctGuesses(letter: Char): String {
 
         word.mapIndexed { index, char ->
@@ -15,7 +16,12 @@ class Hangman(
                 disguisedWord[index] = letter
             }
         }
-        return disguisedWord.joinToString(" ")
+
+        return if (disguisedWord.joinToString("") == word) {
+            "# You found the word! ($word)"
+        } else {
+            disguisedWord.joinToString(" ")
+        }
     }
 
     private fun wrongGuesses(letter: Char): String {

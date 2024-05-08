@@ -79,4 +79,18 @@ class HangmanTest {
         //then
         assertEquals("t _ _ t", result)
     }
+
+    @Test
+    fun `word is guessed`() {
+        //Given
+        val hangman = Hangman("test")
+        hangman.guess('t')
+        hangman.guess('s')
+
+        //When
+        val result = hangman.guess('e')
+
+        //Then
+        assertEquals("# You found the word! (test)", result)
+    }
 }
