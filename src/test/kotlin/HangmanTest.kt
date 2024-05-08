@@ -67,4 +67,16 @@ class HangmanTest {
         //Then
         assertEquals("_ e s _ # lu", result)
     }
+
+    @Test
+    fun `guess duplicate letter`() {
+        //Given
+        val hangman = Hangman("test")
+
+        //When
+        val result = hangman.guess('t')
+
+        //then
+        assertEquals("t _ _ t", result)
+    }
 }

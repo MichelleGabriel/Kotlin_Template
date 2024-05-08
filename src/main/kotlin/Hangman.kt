@@ -9,11 +9,12 @@ class Hangman(
     }
 
     private fun correctGuesses(letter: Char): String {
-        if (word.contains(letter)) {
-            val index = word.indexOf(letter)
-            disguisedWord[index] = letter
-        }
 
+        word.mapIndexed { index, char ->
+            if (char == letter) {
+                disguisedWord[index] = letter
+            }
+        }
         return disguisedWord.joinToString(" ")
     }
 
