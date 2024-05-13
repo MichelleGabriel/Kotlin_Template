@@ -1,4 +1,4 @@
-import Type.*
+import PokemonType.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
@@ -9,7 +9,7 @@ class TypeTest {
 
     @ParameterizedTest(name = "is super effective when {0} attacks {1}")
     @MethodSource("superEffectiveCases")
-    fun `handles all super effective cases`(ownType: Type, enemyType: Type) {
+    fun `handles all super effective cases`(ownType: PokemonType, enemyType: PokemonType) {
         // GIVEN
 
         // WHEN
@@ -21,7 +21,7 @@ class TypeTest {
 
     @ParameterizedTest(name = "is not very effective when {0} attacks {1}")
     @MethodSource("notVeryEffectiveCases")
-    fun `handles all not super effective cases`(ownType: Type, enemyType: Type) {
+    fun `handles all not super effective cases`(ownType: PokemonType, enemyType: PokemonType) {
         // GIVEN
 
         // WHEN

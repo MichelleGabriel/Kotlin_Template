@@ -9,8 +9,8 @@ class PokemonBattleTest {
 
         //When
         val damage = pokemonBattle.calculate(
-            ownType = Type.FIRE,
-            enemyType = Type.ELECTRO,
+            ownType = PokemonType.FIRE,
+            enemyType = PokemonType.ELECTRO,
             ownAttack = 20,
             enemyDefense = 5
         )
