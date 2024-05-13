@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class TemplateTest {
+class Tests {
+
     @Test
-    fun `pass`() {
-        assertTrue(true)
+    fun `Sum of Squared Inputs`() {
+        assertEquals(5, squareSum(arrayOf(1, 2)))
+        assertEquals(50, squareSum(arrayOf(0, 3, 4, 5)))
+        assertEquals(0, squareSum(arrayOf()))
     }
 }

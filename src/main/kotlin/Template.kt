@@ -1,3 +1,5 @@
-class Template {
-    fun foo() = true
+fun squareSum(n: Array<Int>): Int {
+
+    return n.sumOf { it * it }
+
 }
