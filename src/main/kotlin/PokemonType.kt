@@ -1,21 +1,23 @@
 enum class PokemonType {
     FIRE, GRASS, WATER, ELECTRO;
 
-    fun effectivenessMultiplier(enemyType: PokemonType): Double {
-        when {
-            //Super effective
-            this == PokemonType.FIRE && enemyType == PokemonType.GRASS -> return 2.0
-            this == PokemonType.WATER && enemyType == PokemonType.FIRE -> return 2.0
-            this == PokemonType.GRASS && enemyType == PokemonType.ELECTRO -> return 2.0
-            this == PokemonType.ELECTRO && enemyType == PokemonType.WATER -> return 2.0
+    private val notVeryEffective = 0.5
+    private val superEffectiveMultiplier = 2.0
+    private val neutralMultiplier = 1.0
 
-            //Not very effective
-            this == PokemonType.GRASS && enemyType == PokemonType.FIRE -> return 0.5
-            this == PokemonType.FIRE && enemyType == PokemonType.WATER -> return 0.5
-            this == PokemonType.ELECTRO && enemyType == PokemonType.GRASS -> return 0.5
-            this == PokemonType.WATER && enemyType == PokemonType.ELECTRO -> return 0.5
+    fun effectivenessMultiplier(enemyType: PokemonType): Double {
+        return when {
+            this == FIRE && enemyType == GRASS -> superEffectiveMultiplier
+            this == WATER && enemyType == FIRE -> superEffectiveMultiplier
+            this == GRASS && enemyType == ELECTRO -> superEffectiveMultiplier
+            this == ELECTRO && enemyType == WATER -> superEffectiveMultiplier
+
+            this == GRASS && enemyType == FIRE -> notVeryEffective
+            this == FIRE && enemyType == WATER -> notVeryEffective
+            this == ELECTRO && enemyType == GRASS -> notVeryEffective
+            this == WATER && enemyType == ELECTRO -> notVeryEffective
+
+            else -> neutralMultiplier
         }
-        //neutral
-        return 1.0
     }
 }
