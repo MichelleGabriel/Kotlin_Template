@@ -8,10 +8,32 @@ class PokemonBattleTest {
         val pokemonBattle = PokemonBattle()
 
         //When
-        val damage = pokemonBattle.calculate("Fire", "Electro", 20, 10)
+        val damage = pokemonBattle.calculate(
+            ownType = Type.FIRE,
+            enemyType = Type.ELECTRO,
+            ownAttack = 20,
+            enemyDefense = 10
+        )
 
         //Then
         assertEquals(100, damage)
 
+    }
+
+    @Test
+    fun `calculates damage with super effectiveness`() {
+        //Given
+        val pokemonBattle = PokemonBattle()
+
+        //When
+        val damage = pokemonBattle.calculate(
+            ownType = Type.FIRE,
+            enemyType = Type.GRASS,
+            ownAttack = 20,
+            enemyDefense = 10
+        )
+
+        //Then
+        assertEquals(200, damage)
     }
 }
