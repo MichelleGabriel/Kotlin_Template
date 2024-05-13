@@ -7,6 +7,7 @@ class PokemonBattle {
     private fun calculateEffectiveness(ownType: Type, enemyType: Type): Int {
         when {
             ownType == Type.FIRE && enemyType == Type.GRASS -> return 2
+            ownType == Type.WATER && enemyType == Type.FIRE -> return 2
         }
         return 1
     }
