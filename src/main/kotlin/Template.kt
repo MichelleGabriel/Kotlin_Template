@@ -1,5 +1,3 @@
-fun evenNumbers(array: List<Int>, number: Int): List<Int> {
-    return array.map { if (it % 2 == 0) {
-        it
-    }}.takeLast(number)
-}
+fun evenNumbers(array: List<Int>, number: Int): List<Int> = array.filter {
+    it % 2 == 0
+    }.takeLast(number)
