@@ -80,4 +80,71 @@ class PathFinderCounterTest {
         //THEN
         assertEquals(3, result)
     }
+
+    @Test
+    fun `returns zero if player is blocked`() {
+        //GIVEN
+
+        //WHEN
+        val result = getNumberOfReachableFields(
+            grid = arrayOf(
+                arrayOf(0, 0, 0, 1, 1, 1),
+                arrayOf(0, 1, 0, 1, 1, 1),
+                arrayOf(0, 0, 0, 1, 1, 1),
+                arrayOf(1, 1, 1, 1, 1, 1),
+                arrayOf(1, 1, 1, 1, 1, 1)
+            ),
+            startRow = 1,
+            startColumn = 1
+        )
+
+        //THEN
+        assertEquals(0, result)
+    }
+
+    @Test
+    fun `returns correct amount if some blocks in last row are blocked`() {
+        //GIVEN
+
+        //WHEN
+        val result = getNumberOfReachableFields(
+            grid = arrayOf(
+                arrayOf(1, 1, 1, 1, 1, 1),
+                arrayOf(1, 1, 1, 1, 1, 1),
+                arrayOf(1, 0, 0, 0, 0, 0),
+                arrayOf(1, 1, 1, 1, 1, 1),
+                arrayOf(1, 1, 0, 0, 1, 1)
+            ),
+            startRow = 1,
+            startColumn = 1
+        )
+
+        //THEN
+        assertEquals(4, result)
+    }
+
+    @Test
+    fun `snake stuff`() {
+        //GIVEN
+
+        //WHEN
+        val result = getNumberOfReachableFields(
+            grid = arrayOf(
+                arrayOf(1, 1, 1, 1, 1, 1, 1, 1),
+                arrayOf(0, 0, 0, 0, 0, 0, 0, 1),
+                arrayOf(1, 1, 1, 1, 1, 1, 1, 1),
+                arrayOf(1, 0, 0, 0, 0, 0, 0, 0),
+                arrayOf(1, 1, 1, 1, 1, 1, 1, 1),
+                arrayOf(0, 0, 0, 0, 0, 0, 0, 1),
+                arrayOf(1, 1, 1, 1, 1, 1, 1, 1),
+                arrayOf(1, 0, 0, 0, 0, 0, 0, 0),
+                arrayOf(1, 1, 1, 1, 1, 1, 1, 1)
+            ),
+            startRow = 1,
+            startColumn = 1
+        )
+
+        //THEN
+        assertEquals(8, result)
+    }
 }
