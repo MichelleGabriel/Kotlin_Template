@@ -1,39 +1,7 @@
 fun getNumberOfReachableFields(grid: Array<Array<Int>>, startRow: Int, startColumn: Int): Int {
-//    return functional(startRow, startColumn, grid)
-
-    return recursive(grid, Coordinate(startRow, startColumn)).size
-}
-
-fun recursive(grid: Array<Array<Int>>, currentField: Coordinate, source: Coordinate = currentField): Set<Coordinate> {
-    val possibleFields = mutableSetOf<Coordinate>()
-
-    if (currentField.y == grid.size - 1) {
-        possibleFields.add(currentField)
-    }
-
-    possibleFields.addIfAvailableRecursive(leftOf(currentField), currentField, source, grid)
-    possibleFields.addIfAvailableRecursive(rightOf(currentField), currentField, source, grid)
-    possibleFields.addIfAvailableRecursive(bottomOf(currentField), currentField, source, grid)
-
-    return possibleFields
-}
-
-private fun MutableSet<Coordinate>.addIfAvailableRecursive(
-    target: Coordinate,
-    currentField: Coordinate,
-    source: Coordinate,
-    grid: Array<Array<Int>>
-) {
-    if (target != source && grid.isReachable(target)) {
-        addAll(recursive(grid, target, currentField))
-    }
-}
-
-private fun functional(startRow: Int, startColumn: Int, grid: Array<Array<Int>>): Int {
     val visited = mutableSetOf<Coordinate>()
     val coordinateQueue = mutableSetOf(Coordinate(startRow, startColumn))
-
-    while (coordinateQueue.isNotEmpty()) {
+    while (coordinateQueue.isNotEmpty<Coordinate>()) {
         val currentCoordinates = coordinateQueue.first()
         coordinateQueue.remove(currentCoordinates)
         visited.add(currentCoordinates)
@@ -42,7 +10,6 @@ private fun functional(startRow: Int, startColumn: Int, grid: Array<Array<Int>>)
         coordinateQueue.addIfAvailable(rightOf(currentCoordinates), visited, grid)
         coordinateQueue.addIfAvailable(bottomOf(currentCoordinates), visited, grid)
     }
-
     return visited.count { it.y == grid.size - 1 }
 }
 

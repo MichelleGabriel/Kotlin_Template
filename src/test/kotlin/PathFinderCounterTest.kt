@@ -147,4 +147,7 @@ class PathFinderCounterTest {
         //THEN
         assertEquals(8, result)
     }
+
+
+
 }
