@@ -124,6 +124,26 @@ class PathFinderCounterTest {
     }
 
     @Test
+    fun `returns correct amount when player can move upwards`() {
+        //GIVEN
+
+        //WHEN
+        val result = getNumberOfReachableFields(
+            grid = arrayOf(
+                arrayOf(1, 1, 1, 0),
+                arrayOf(1, 0, 1, 0),
+                arrayOf(0, 0, 1, 0),
+                arrayOf(1, 1, 1, 1),
+                ),
+            startRow = 1,
+            startColumn = 0
+        )
+
+        //THEN
+        assertEquals(4, result)
+    }
+
+    @Test
     fun `snake stuff`() {
         //GIVEN
 
@@ -147,7 +167,5 @@ class PathFinderCounterTest {
         //THEN
         assertEquals(8, result)
     }
-
-
 
 }

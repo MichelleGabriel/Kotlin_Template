@@ -9,6 +9,7 @@ fun getNumberOfReachableFields(grid: Array<Array<Int>>, startRow: Int, startColu
         coordinateQueue.addIfAvailable(leftOf(currentCoordinates), visited, grid)
         coordinateQueue.addIfAvailable(rightOf(currentCoordinates), visited, grid)
         coordinateQueue.addIfAvailable(bottomOf(currentCoordinates), visited, grid)
+        coordinateQueue.addIfAvailable(topOf(currentCoordinates), visited, grid)
     }
     return visited.count { it.y == grid.size - 1 }
 }
@@ -35,6 +36,8 @@ fun leftOf(currentCoordinates: Coordinate) = Coordinate(currentCoordinates.y, cu
 fun rightOf(currentCoordinates: Coordinate) = Coordinate(currentCoordinates.y, currentCoordinates.x + 1)
 
 fun bottomOf(currentCoordinates: Coordinate) = Coordinate(currentCoordinates.y + 1, currentCoordinates.x)
+
+fun topOf(currentCoordinates: Coordinate) = Coordinate(currentCoordinates.y - 1, currentCoordinates.x)
 
 data class Coordinate(
     val y: Int,
