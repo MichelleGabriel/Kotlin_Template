@@ -1,51 +1,44 @@
 fun getNumberOfReachableFields(grid: Array<Array<Int>>, startRow: Int, startColumn: Int): Int {
 
-    val visited = mutableSetOf<Coordinates>()
-    val available = mutableSetOf(Coordinates(startRow, startColumn))
+    val visited = mutableSetOf<Coordinate>()
+    val coordinateQueue = mutableSetOf(Coordinate(startRow, startColumn))
 
-    while (available.isNotEmpty()) {
-        val currentCoordinates = available.first()
+    while (coordinateQueue.isNotEmpty()) {
+        val currentCoordinates = coordinateQueue.first()
         visited.add(currentCoordinates)
-        available.remove(currentCoordinates)
+        coordinateQueue.remove(currentCoordinates)
 
-        //left
-        val leftCoordinates = Coordinates(currentCoordinates.y, currentCoordinates.x - 1)
-
-        if (leftCoordinates.x in 0..<grid.first().size && !visited.contains(leftCoordinates) && grid.isReachable(
-                leftCoordinates
-            )
-        ) {
-            available.add(leftCoordinates)
-        }
-
-        //right
-        val rightCoordinates = Coordinates(currentCoordinates.y, currentCoordinates.x + 1)
-
-        if (rightCoordinates.x in 0..<grid.first().size && !visited.contains(rightCoordinates) && grid.isReachable(
-                rightCoordinates
-            )
-        ) {
-            available.add(rightCoordinates)
-        }
-
-        //forward
-        val forwardCoordinates = Coordinates(currentCoordinates.y + 1, currentCoordinates.x)
-
-        if (forwardCoordinates.y in 0..<grid.size && !visited.contains(forwardCoordinates) && grid.isReachable(
-                forwardCoordinates
-            )
-        ) {
-            available.add(forwardCoordinates)
-        }
+        coordinateQueue.addIfAvailable(leftOf(currentCoordinates), visited, grid)
+        coordinateQueue.addIfAvailable(rightOf(currentCoordinates), visited, grid)
+        coordinateQueue.addIfAvailable(bottomOf(currentCoordinates), visited, grid)
     }
 
     return visited.count { it.y == grid.size - 1 }
 }
 
-private fun Array<Array<Int>>.isReachable(nextCoordinates: Coordinates) =
-    this[nextCoordinates.y][nextCoordinates.x] == 1
+private fun MutableSet<Coordinate>.addIfAvailable(
+    coordinate: Coordinate,
+    visited: MutableSet<Coordinate>,
+    grid: Array<Array<Int>>
+) {
+    if (!visited.contains(coordinate) && grid.isReachable(coordinate)) {
+        add(coordinate)
+    }
+}
 
-data class Coordinates(
+private fun Array<Array<Int>>.isReachable(nextCoordinates: Coordinate) = this.isInBounds(nextCoordinates) &&
+        this[nextCoordinates.y][nextCoordinates.x] == 1
+
+private fun Array<Array<Int>>.isInBounds(coordinates: Coordinate): Boolean =
+    coordinates.x in 0..<this.first().size && coordinates.y in indices
+
+fun leftOf(currentCoordinates: Coordinate) = Coordinate(currentCoordinates.y, currentCoordinates.x - 1)
+
+fun rightOf(currentCoordinates: Coordinate) = Coordinate(currentCoordinates.y, currentCoordinates.x + 1)
+
+fun bottomOf(currentCoordinates: Coordinate) = Coordinate(currentCoordinates.y + 1, currentCoordinates.x)
+
+data class Coordinate(
     val y: Int,
     val x: Int
 )
