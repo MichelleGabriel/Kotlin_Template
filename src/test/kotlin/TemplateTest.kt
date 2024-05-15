@@ -29,4 +29,20 @@ class EquipmentTest {
         assertEquals(2, result)
     }
 
+    @Test
+    fun `is not increasing attack value after level max`() {
+        //Given
+        val equipment = Equipment()
+        equipment.levelUp()
+        equipment.levelUp()
+        equipment.levelUp()
+        equipment.levelUp()
+
+        //When
+        val result = equipment.valueFor(Attack)
+
+        //Then
+        assertEquals(4, result)
+    }
+
 }
