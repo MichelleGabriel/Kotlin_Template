@@ -1,6 +1,5 @@
-class Equipment(rarity: Rarity) {
+class Equipment(private val rarity: Rarity) {
 
-    private val maxLevel = rarity.maxLevel
     private var level = 0
     private var attack = 2
 
@@ -12,7 +11,7 @@ class Equipment(rarity: Rarity) {
     }
 
     fun levelUp() {
-        if (level < maxLevel) {
+        if (level < rarity.maxLevel) {
             attack += 4
             level++
         }

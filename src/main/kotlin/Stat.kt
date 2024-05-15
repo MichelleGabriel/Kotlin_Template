@@ -1,4 +1,6 @@
 enum class Stat {
     ATTACK,
-    HEALTH
+    HEALTH,
+    ATTACK_SPEED,
+    RECOVERY
 }
