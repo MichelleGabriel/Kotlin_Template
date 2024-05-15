@@ -1,12 +1,12 @@
-class Equipment {
+class Equipment(rarity: Rarity) {
 
-    private val maxLevel = 3
+    private val maxLevel = rarity.maxLevel
     private var level = 0
     private var attack = 2
 
     fun valueFor(stat: Stat): Int {
         return when (stat) {
-            Stat.Attack -> attack
+            Stat.ATTACK -> attack
             else -> 0
         }
     }
