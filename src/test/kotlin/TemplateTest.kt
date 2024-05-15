@@ -1,5 +1,5 @@
-import Stat.ATTACK
-import Stat.HEALTH
+import EquipmentType.*
+import Stat.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -8,7 +8,7 @@ class EquipmentTest {
     @Test
     fun `has default value for attack`() {
         //Given
-        val equipment = anEquipment()
+        val equipment = anEquipment(type = WEAPON)
 
         //When
         val result = equipment.valueFor(ATTACK)
@@ -20,7 +20,7 @@ class EquipmentTest {
     @Test
     fun `is increasing attack value after leveling up`() {
         //Given
-        val equipment = anEquipment()
+        val equipment = anEquipment(type = WEAPON)
         equipment.levelUp()
 
         //When
@@ -33,7 +33,7 @@ class EquipmentTest {
     @Test
     fun `is not increasing attack value when max level for common is reached`() {
         //Given
-        val equipment = anEquipment(Rarity.COMMON)
+        val equipment = anEquipment(Rarity.COMMON, type = WEAPON)
         equipment.levelUp()
         equipment.levelUp()
         equipment.levelUp()
@@ -48,7 +48,7 @@ class EquipmentTest {
     @Test
     fun `is not increasing attack value when max level for rare is reached`() {
         //Given
-        val equipment = anEquipment(Rarity.RARE)
+        val equipment = anEquipment(Rarity.RARE, type = WEAPON)
         equipment.levelUp()
         equipment.levelUp()
         equipment.levelUp()
@@ -64,7 +64,7 @@ class EquipmentTest {
     @Test
     fun `is not increasing attack value when max level for epic is reached`() {
         //Given
-        val equipment = anEquipment(Rarity.EPIC)
+        val equipment = anEquipment(Rarity.EPIC, type = WEAPON)
         equipment.levelUp()
         equipment.levelUp()
         equipment.levelUp()
@@ -81,7 +81,11 @@ class EquipmentTest {
     @Test
     fun `is not increasing attack value when max level for legendary is reached`() {
         //Given
-        val equipment = anEquipment(Rarity.LEGENDARY)
+        val equipment = anEquipment(Rarity.LEGENDARY, type = WEAPON)
+
+        //Needs to be refactored
+        //equipment.levelUp(times = 6)
+
         equipment.levelUp()
         equipment.levelUp()
         equipment.levelUp()
@@ -99,7 +103,7 @@ class EquipmentTest {
     @Test
     fun `has default value for health`() {
         //Given
-        val equipment = anEquipment()
+        val equipment = anEquipment(type = WEAPON)
 
         //When
         val result = equipment.valueFor(HEALTH)
@@ -111,10 +115,10 @@ class EquipmentTest {
     @Test
     fun `has default value for attackSpeed`() {
         //Given
-        val equipment = anEquipment()
+        val equipment = anEquipment(type = HEAD)
 
         //When
-        val result = equipment.valueFor(Stat.ATTACK_SPEED)
+        val result = equipment.valueFor(ATTACK_SPEED)
 
         //Then
         assertEquals(0, result)
@@ -123,15 +127,33 @@ class EquipmentTest {
     @Test
     fun `has default value for recovery`() {
         //Given
-        val equipment = anEquipment()
+        val equipment = anEquipment(type = GLOVES)
 
         //When
-        val result = equipment.valueFor(Stat.RECOVERY)
+        val result = equipment.valueFor(RECOVERY)
 
         //Then
         assertEquals(0, result)
     }
 
-    private fun anEquipment(rarity: Rarity = Rarity.RARE) = Equipment(rarity)
+    @Test
+    fun `has increased health stat when equipment is chest`() {
+
+        //Given
+        val equipment = anEquipment(type = CHEST)
+
+        //When
+        val result = equipment.valueFor(HEALTH)
+
+        //Then
+        assertEquals(2, result)
+
+    }
+
+    private fun anEquipment(
+        rarity: Rarity = Rarity.COMMON,
+        type: EquipmentType = GLOVES
+    ) = Equipment(rarity, type)
+
 
 }
