@@ -1,3 +1,5 @@
-class Template {
-    fun foo() = true
+class Equipment {
+    fun valueFor(attack: Stat): Int {
+        return attack.value
+    }
 }
