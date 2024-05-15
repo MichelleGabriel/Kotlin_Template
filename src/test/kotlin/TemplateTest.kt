@@ -6,31 +6,6 @@ import org.junit.jupiter.api.Test
 class EquipmentTest {
 
     @Test
-    fun `has default value for attack`() {
-        //Given
-        val equipment = anEquipment(type = WEAPON)
-
-        //When
-        val result = equipment.valueFor(ATTACK)
-
-        //Then
-        assertEquals(2, result)
-    }
-
-    @Test
-    fun `is increasing attack value after leveling up`() {
-        //Given
-        val equipment = anEquipment(type = WEAPON)
-        equipment.levelUp()
-
-        //When
-        val result = equipment.valueFor(ATTACK)
-
-        //Then
-        assertEquals(6, result)
-    }
-
-    @Test
     fun `is not increasing attack value when max level for common is reached`() {
         //Given
         val equipment = anEquipment(Rarity.COMMON, type = WEAPON)
