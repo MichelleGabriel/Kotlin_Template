@@ -1,5 +1,12 @@
 class Equipment {
-    fun valueFor(attack: Stat): Int {
-        return attack.value
+
+    private var attack: Stat = Stat.Attack
+
+    fun valueFor(stat: Stat): Int {
+        return stat.value
+    }
+
+    fun levelUp() {
+        attack.value++
     }
 }
