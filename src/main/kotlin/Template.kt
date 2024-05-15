@@ -1,7 +1,7 @@
 class Equipment {
 
     private val maxLevel = 3
-    private var attack = 1
+    private var attack = 2
     private var level = 0
 
     fun valueFor(stat: Stat): Int {
@@ -10,7 +10,7 @@ class Equipment {
 
     fun levelUp() {
         if (level < maxLevel) {
-            attack++
+            attack += 4
             level++
         }
     }
