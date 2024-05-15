@@ -1,4 +1,4 @@
-import Stat.Attack
+import Stat.*
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -43,6 +43,18 @@ class EquipmentTest {
 
         //Then
         assertEquals(14, result)
+    }
+
+    @Test
+    fun `has default value for health`() {
+        //Given
+        val equipment = Equipment()
+
+        //When
+        val result = equipment.valueFor(Health)
+
+        //Then
+        assertEquals(0, result)
     }
 
 }

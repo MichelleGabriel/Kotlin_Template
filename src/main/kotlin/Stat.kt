@@ -1,3 +1,4 @@
 enum class Stat {
-    Attack
+    Attack,
+    Health
 }
