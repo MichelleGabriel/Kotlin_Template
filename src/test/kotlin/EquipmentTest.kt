@@ -20,7 +20,7 @@ class EquipmentTest {
         val result = equipment.valueFor(Stat.ATTACK_SPEED)
 
         //Then
-        assertEquals(14, result)
+        assertEquals(GLOVES.valueAtLevel(Stat.ATTACK_SPEED, 3), result)
     }
 }
 

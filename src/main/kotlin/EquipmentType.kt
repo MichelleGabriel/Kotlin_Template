@@ -1,8 +1,10 @@
-enum class EquipmentType(private val primaryStat: Stat) {
-    CHEST(Stat.HEALTH),
-    WEAPON(Stat.ATTACK),
-    GLOVES(Stat.ATTACK_SPEED),
-    HEAD(Stat.RECOVERY);
+import Stat.*
 
-    fun valueAtLevel(stat: Stat, level: Int)  = if (stat == primaryStat) 2 + 4 * level else 0
+enum class EquipmentType(private val primaryStat: Stat) {
+    CHEST(HEALTH),
+    WEAPON(ATTACK),
+    GLOVES(ATTACK_SPEED),
+    HEAD(RECOVERY);
+
+    fun valueAtLevel(stat: Stat, level: Int) = if (stat == primaryStat) 2 + stat.baseValue * level else 0
 }

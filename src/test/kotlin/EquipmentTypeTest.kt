@@ -10,7 +10,7 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(6, weapon.valueAtLevel(Stat.ATTACK, 1))
+        assertEquals(2 + Stat.ATTACK.baseValue, weapon.valueAtLevel(Stat.ATTACK, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.HEALTH, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.RECOVERY, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
@@ -24,7 +24,7 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(6, weapon.valueAtLevel(Stat.HEALTH, 1))
+        assertEquals(2 + Stat.HEALTH.baseValue, weapon.valueAtLevel(Stat.HEALTH, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.ATTACK, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.RECOVERY, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
@@ -38,7 +38,7 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(6, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
+        assertEquals(2 + Stat.ATTACK_SPEED.baseValue, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.ATTACK, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.HEALTH, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.RECOVERY, 1))
@@ -52,7 +52,7 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(6, weapon.valueAtLevel(Stat.RECOVERY, 1))
+        assertEquals(2 + Stat.RECOVERY.baseValue, weapon.valueAtLevel(Stat.RECOVERY, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.ATTACK, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.HEALTH, 1))
         assertEquals(0, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
