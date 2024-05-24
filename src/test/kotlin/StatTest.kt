@@ -23,11 +23,11 @@ class StatTest {
 
         //Then
         assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 0))
-        assertEquals(4, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 1))
+        assertEquals(Stat.ATTACK.increment, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 1))
         assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 2))
         assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 3))
         assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 4))
-        assertEquals(4, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 5))
+        assertEquals(Stat.ATTACK.increment, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 5))
     }
 
     @Test
@@ -39,7 +39,7 @@ class StatTest {
         //Then
         assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 0))
         assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 1))
-        assertEquals(5, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 2))
+        assertEquals(Stat.HEALTH.increment, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 2))
         assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 3))
         assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 4))
         assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 5))

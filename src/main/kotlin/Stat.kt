@@ -7,15 +7,15 @@ enum class Stat(val increment: Int) {
     fun someMethodNameWeAreGoingToDecideLater(level: Int): Int = when (this) {
         ATTACK -> {
             when (level) {
-                1 -> 4
-                5 -> 4
+                1 -> ATTACK.increment
+                5 -> ATTACK.increment
                 else -> 0
             }
         }
 
         HEALTH -> {
             when (level) {
-                2 -> 5
+                2 -> HEALTH.increment
                 else -> 0
             }
         }
