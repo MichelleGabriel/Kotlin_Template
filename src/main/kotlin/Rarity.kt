@@ -3,5 +3,4 @@ enum class Rarity (val maxLevel : Int){
     RARE(3),
     EPIC(4),
     LEGENDARY(5)
-
 }
