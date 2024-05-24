@@ -6,5 +6,5 @@ enum class EquipmentType(private val primaryStat: Stat) {
     GLOVES(ATTACK_SPEED),
     HEAD(RECOVERY);
 
-    fun valueAtLevel(stat: Stat, level: Int) = if (stat == primaryStat) 2 + stat.baseValue * level else 0
+    fun valueAt(level: Int, stat: Stat) = if (stat == primaryStat) 2 + stat.increment * level else 0
 }

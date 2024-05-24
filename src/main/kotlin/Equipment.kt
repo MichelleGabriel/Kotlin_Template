@@ -4,7 +4,7 @@ class Equipment(
 ) {
     private var level = 0
 
-    fun valueFor(stat: Stat) = type.valueAtLevel(stat, level)
+    fun valueFor(stat: Stat) = type.valueAt(level, stat)
 
     fun levelUp() {
         if (level >= rarity.maxLevel) return

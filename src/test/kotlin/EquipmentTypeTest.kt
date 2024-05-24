@@ -10,10 +10,10 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(2 + Stat.ATTACK.baseValue, weapon.valueAtLevel(Stat.ATTACK, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.HEALTH, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.RECOVERY, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
+        assertEquals(2 + Stat.ATTACK.increment, weapon.valueAt(1, Stat.ATTACK))
+        assertEquals(0, weapon.valueAt(1, Stat.HEALTH))
+        assertEquals(0, weapon.valueAt(1, Stat.RECOVERY))
+        assertEquals(0, weapon.valueAt(1, Stat.ATTACK_SPEED))
     }
 
     @Test
@@ -24,10 +24,10 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(2 + Stat.HEALTH.baseValue, weapon.valueAtLevel(Stat.HEALTH, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.ATTACK, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.RECOVERY, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
+        assertEquals(2 + Stat.HEALTH.increment, weapon.valueAt(1, Stat.HEALTH))
+        assertEquals(0, weapon.valueAt(1, Stat.ATTACK))
+        assertEquals(0, weapon.valueAt(1, Stat.RECOVERY))
+        assertEquals(0, weapon.valueAt(1, Stat.ATTACK_SPEED))
     }
 
     @Test
@@ -38,10 +38,10 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(2 + Stat.ATTACK_SPEED.baseValue, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.ATTACK, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.HEALTH, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.RECOVERY, 1))
+        assertEquals(2 + Stat.ATTACK_SPEED.increment, weapon.valueAt(1, Stat.ATTACK_SPEED))
+        assertEquals(0, weapon.valueAt(1, Stat.ATTACK))
+        assertEquals(0, weapon.valueAt(1, Stat.HEALTH))
+        assertEquals(0, weapon.valueAt(1, Stat.RECOVERY))
     }
 
     @Test
@@ -52,9 +52,9 @@ class EquipmentTypeTest{
         // WHEN
 
         // THEN
-        assertEquals(2 + Stat.RECOVERY.baseValue, weapon.valueAtLevel(Stat.RECOVERY, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.ATTACK, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.HEALTH, 1))
-        assertEquals(0, weapon.valueAtLevel(Stat.ATTACK_SPEED, 1))
+        assertEquals(2 + Stat.RECOVERY.increment, weapon.valueAt(1, Stat.RECOVERY))
+        assertEquals(0, weapon.valueAt(1, Stat.ATTACK))
+        assertEquals(0, weapon.valueAt(1, Stat.HEALTH))
+        assertEquals(0, weapon.valueAt(1, Stat.ATTACK_SPEED))
     }
 }

@@ -1,4 +1,4 @@
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 class StatTest {
@@ -9,12 +9,61 @@ class StatTest {
         //When
 
         //Then
-        assertEquals(4, Stat.ATTACK.baseValue)
-        assertEquals(5, Stat.HEALTH.baseValue)
-        assertEquals(3, Stat.ATTACK_SPEED.baseValue)
-        assertEquals(2, Stat.RECOVERY.baseValue)
+        assertEquals(4, Stat.ATTACK.increment)
+        assertEquals(5, Stat.HEALTH.increment)
+        assertEquals(3, Stat.ATTACK_SPEED.increment)
+        assertEquals(2, Stat.RECOVERY.increment)
+    }
+
+    @Test
+    fun `increment value at specific level for attack`() {
+        //Given
+
+        //When
+
+        //Then
+        assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 0))
+        assertEquals(4, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 1))
+        assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 2))
+        assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 3))
+        assertEquals(0, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 4))
+        assertEquals(4, Stat.ATTACK.someMethodNameWeAreGoingToDecideLater(level = 5))
+    }
+
+    @Test
+    fun `increment value at specific level for Health`() {
+        //Given
+
+        //When
+
+        //Then
+        assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 0))
+        assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 1))
+        assertEquals(5, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 2))
+        assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 3))
+        assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 4))
+        assertEquals(0, Stat.HEALTH.someMethodNameWeAreGoingToDecideLater(level = 5))
     }
 }
+// ATTACK - variant a
+// level | value
+// 0     | 0
+// 1     | 4
+// 2     | 0
+// 3     | 0
+// 4     | 0
+// 5     | 4
+
+// ATTACK - variant b
+// level | value
+// 0     | 0
+// 1     | 4
+// 2     | 4
+// 3     | 4
+// 4     | 4
+// 5     | 8
+
+
 // weapon
 // level | attackdmg• | health | AS | Rec
 // level 0 | 2        | 0      | 0 | 0
